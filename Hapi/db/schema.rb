@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20160813193139) do
 
-  create_table "bps", force: :cascade do |t|
+  create_table "fitbits", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -22,14 +22,6 @@ ActiveRecord::Schema.define(version: 20160813193139) do
     t.datetime "updated_at",      null: false
     t.string   "response"
     t.string   "parsed_response"
-  end
-
-  create_table "patients", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "age"
-    t.string   "gender"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "pulse_oxes", force: :cascade do |t|
