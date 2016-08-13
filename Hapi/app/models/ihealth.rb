@@ -27,6 +27,6 @@ class Ihealth < ApplicationRecord
   end
 
   def bo_data_list
-    @bo_data_list = @parsed_response_bo[:BODataList]
+    @bo_data_list = @parsed_response_bo['BODataList']
   end
 end
