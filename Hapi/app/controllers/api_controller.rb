@@ -4,9 +4,87 @@ class ApiController < ApplicationController
     new_ihealth_bp
     new_ihealth_bo
     @output = {}
-    @output[:bp_data_list] = @i_health_bp.bp_data_list
+    if @i_health_bp.bp_data_list != []
+      @output[:bp_data_list] = @i_health_bp.bp_data_list
+      @output[:bp_dummy] = false
+    else
+      @output[:bp_data_list] = [
+        {
+          'sys' => '120',
+          'dia' => '80',
+          'date' => '08-06-2016'
+        },
+        {
+          'sys' => '125',
+          'dia' => '83',
+          'date' => '08-07-2016'
+        },
+        {
+          'sys' => '130',
+          'dia' => '91',
+          'date' => '08-08-2016'
+        },
+        {
+          'sys' => '128',
+          'dia' => '88',
+          'date' => '08-09-2016'
+        },
+        {
+          'sys' => '119',
+          'dia' => '79',
+          'date' => '08-10-2016'
+        },
+        {
+          'sys' => '115',
+          'dia' => '76',
+          'date' => '08-11-2016'
+        },
+        {
+          'sys' => '123',
+          'dia' => '81',
+          'date' => '08-12-2016'
+        }
+      ]
+      @output[:bp_dummy] = true
+    end
     @output[:bp_unit] = @i_health_bp.bp_unit
-    @output[:bo_data_list] = @i_health_bo.bo_data_list
+    if @i_health_bo.bo_data_list != []
+      @output[:bo_data_list] = @i_health_bo.bo_data_list
+      @output[:bo_dummy] = false
+    else
+      @output[:bo_data_list] = [
+        {
+          'oxy' => '95',
+          'date' => '08-06-2016'
+        },
+        {
+          'oxy' => '92',
+          'date' => '08-07-2016'
+        },
+        {
+          'oxy' => '91',
+          'date' => '08-08-2016'
+        },
+        {
+          'oxy' => '89',
+          'date' => '08-09-2016'
+        },
+        {
+          'oxy' => '93',
+          'date' => '08-10-2016'
+        },
+        {
+          'oxy' => '97',
+          'date' => '08-11-2016'
+        },
+        {
+          'oxy' => '99',
+          'date' => '08-12-2016'
+        },
+
+      ]
+      @output[:bo_dummy] = true
+    end
     render json: @output
   end
 
