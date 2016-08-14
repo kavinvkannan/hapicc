@@ -48,9 +48,10 @@ class ApiController < ApplicationController
       ]
       @output["bp_dummy"] = true
     end
-    @output["bp_unit"] = @i_health_bp.bp_unit
+
+    @output["bp_unit"] = @i_health_unit
     if @i_health_bo.bo_data_list != []
-      @output["bo_data_list"] = @i_health_bo.bo_data_list
+      @output["bo_data_list"] = @i_health_data_list
       @output["bo_dummy"] = false
     else
       @output["bo_data_list"] = [
@@ -86,6 +87,39 @@ class ApiController < ApplicationController
       ]
       @output["bo_dummy"] = true
     end
+
+    @output["hr_data_list"] = [
+      {
+        "heart_rate": '85',
+        "date": "08-06-2016"
+      },
+      {
+        "heart_rate": '90',
+        "date": "08-07-2016"
+      },
+      {
+        "heart_rate": '105',
+        "date": "08-08-2016"
+      },
+      {
+        "heart_rate": '124',
+        "date": "08-09-2016"
+      },
+      {
+        "heart_rate": '99',
+        "date": "08-10-2016"
+      },
+      {
+        "heart_rate": '85',
+        "date": "08-11-2016"
+      },
+      {
+        "heart_rate": '87',
+        "date": "08-12-2016"
+      }
+    ]
+    @output["hr_dummy"] = true
+
     @output["age"] = @fitbit.age
     @output["name"] = @fitbit.name
     @output["weight"] = @fitbit.weight
@@ -93,6 +127,8 @@ class ApiController < ApplicationController
     @output["gender"] = @fitbit.gender
     render json: @output
   end
+
+
 
   def new_ihealth_bp
     @i_health_bp = Ihealth.new
