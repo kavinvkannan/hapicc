@@ -1,4 +1,4 @@
-function chartBuilder(sysArray, diaArray, dateArray, boArray) {
+function chartBuilder(sysArray, diaArray, dateArray, boArray, hrArray) {
     $('#container').highcharts({
         title: {
             text: 'Blood pressure measurements for the week',
@@ -35,11 +35,13 @@ function chartBuilder(sysArray, diaArray, dateArray, boArray) {
             data: sysArray
         }, {
             name: 'Diastolic',
-
             data: diaArray
         }, {
             name: 'Blood Oxygen',
             data: boArray
+        }, {
+            name: 'Heart Rate',
+            data: hrArray
         }]
     });
 };
@@ -47,10 +49,12 @@ function chartBuilder(sysArray, diaArray, dateArray, boArray) {
 function dataParse(data) {
   var bpRecord = data.bp_data_list;
   var boRecord = data.bo_data_list;
+  var hrRecord = data.hr_data_list;
   var sysArray = [];
   var diaArray = [];
   var dateArray = [];
   var boArray = [];
+  var hrArray = [];
   for (var i = 0; i < bpRecord.length; i += 1) {
     sysArray.push(parseInt(bpRecord[i].sys));
     diaArray.push(parseInt(bpRecord[i].dia));
@@ -58,7 +62,11 @@ function dataParse(data) {
   }
 
   for (var i = 0; i < boRecord.length; i += 1) {
-    boArray.push(parseInt(boRecord[i].date));
+    boArray.push(parseInt(boRecord[i].oxy));
+  }
+
+  for (var i = 0; i < hrRecord.length; i += 1) {
+    hrArray.push(parseInt(hrRecord[i].heart_rate));
   }
 
   console.log(sysArray);
@@ -66,7 +74,7 @@ function dataParse(data) {
   console.log(dateArray);
   console.log(boArray);
   // var dia = data.bp_data_list[0].dia;
-  chartBuilder(sysArray, diaArray, dateArray, boRecord);
+  chartBuilder(sysArray, diaArray, dateArray, boArray, hrArray);
 }
 
 $(document).ready(function() {
@@ -90,4 +98,3 @@ $(document).ready(function() {
  // [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
 
 // patientData (data)
-
