@@ -1,6 +1,6 @@
 class Fitbit < ApplicationRecord
 	def send_api_request
-		headers = {"Authorization" => "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNzkyNVAiLCJhdWQiOiIyMjhWN0QiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd3BybyB3bnV0IHdzbGUgd3dlaSB3c29jIHdhY3Qgd3NldCB3bG9jIiwiZXhwIjoxNDcxMTg4MjMxLCJpYXQiOjE0NzExNTk0MzF9.m1aJ_CciOgOwYu82xyoUSEbcQtXzYA7ekAMvNdXB2HQ"}
+		headers = {"Authorization" => "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNzkyNVAiLCJhdWQiOiIyMjhWN0QiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJ3aHIgd3BybyB3bnV0IHdzbGUgd3dlaSB3c29jIHdhY3Qgd3NldCB3bG9jIiwiZXhwIjoxNDcxMjEzNjM5LCJpYXQiOjE0NzExODQ4Mzl9.SyaczQwypBTggZqjH6oblaCKCZmO_izRXBLtK4NXIjk"}
 		@response = HTTParty.get('https://api.fitbit.com/1/user/-/profile.json', headers: headers).response.body
 	end
 
