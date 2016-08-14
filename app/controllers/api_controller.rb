@@ -3,6 +3,7 @@ class ApiController < ApplicationController
   def new
     new_ihealth_bp
     new_ihealth_bo
+    new_fitbit
     @output = {}
     if @i_health_bp.bp_data_list != []
       @output["bp_data_list"] = @i_health_bp.bp_data_list
@@ -85,11 +86,11 @@ class ApiController < ApplicationController
       ]
       @output["bo_dummy"] = true
     end
-    @output["age"] = @fitbit['age']
-    @output["name"] = @fitbit['name']
-    @output["weight"] = @fitbit['weight']
-    @output["height"] = @fitbit['height']
-    @output["gender"] = @fitbit['gender']
+    @output["age"] = @fitbit.age
+    @output["name"] = @fitbit.name
+    @output["weight"] = @fitbit.weight
+    @output["height"] = @fitbit.height
+    @output["gender"] = @fitbit.gender
     render json: @output
   end
 
