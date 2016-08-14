@@ -1,7 +1,7 @@
 function chartBuilder(sysArray, diaArray, dateArray, boArray, hrArray) {
     $('#container').highcharts({
         title: {
-            text: 'Blood pressure measurements for the week',
+            text: 'Patient Data for the week',
             x: -20 //center
         },
         subtitle: {
