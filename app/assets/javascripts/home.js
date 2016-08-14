@@ -46,3 +46,15 @@ $(function () {
         }]
     });
 });
+
+$.getJSON("views/api/new.html.erb", function( data ) {
+    var items = [];
+    $.each( data, function(key, value) {
+        items.push("<li id='" + key + "'>" + val + "</li>" );
+  });
+ 
+  $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+  }).appendTo( "body" );
+});
