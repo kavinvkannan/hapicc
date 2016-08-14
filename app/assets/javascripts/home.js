@@ -35,6 +35,7 @@ function chartBuilder(sysArray, diaArray, dateArray, boArray) {
             data: sysArray
         }, {
             name: 'Diastolic',
+
             data: diaArray
         }, {
             name: 'Blood Oxygen',
@@ -89,3 +90,4 @@ $(document).ready(function() {
  // [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
 
 // patientData (data)
+
