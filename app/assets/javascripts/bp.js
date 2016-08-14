@@ -3,7 +3,7 @@ $(function () {
 
     $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
         // Create the chart
-        $('#container').highcharts('StockChart', {
+        $('#container-bp').highcharts('StockChart', {
 
             chart: {
                 height: 300
