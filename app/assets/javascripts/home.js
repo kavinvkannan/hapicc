@@ -22,7 +22,7 @@ function chartBuilder(sysArray, diaArray, dateArray, boArray, hrArray) {
             }]
         },
         tooltip: {
-            valueSuffix: 'mmHg'
+            valueSuffix: ''
         },
         legend: {
             layout: 'vertical',
