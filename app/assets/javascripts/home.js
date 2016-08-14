@@ -5,7 +5,7 @@ function chartBuilder(sysArray, diaArray, dateArray, boArray, hrArray) {
             x: -20 //center
         },
         subtitle: {
-            text: 'Source: iHealth',
+            text: 'Source: iHealth, Fitbit',
             x: -20
         },
         xAxis: {
