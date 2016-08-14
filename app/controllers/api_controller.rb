@@ -85,6 +85,11 @@ class ApiController < ApplicationController
       ]
       @output["bo_dummy"] = true
     end
+    @output["age"] = @fitbit['age']
+    @output["name"] = @fitbit['name']
+    @output["weight"] = @fitbit['weight']
+    @output["height"] = @fitbit['height']
+    @output["gender"] = @fitbit['gender']
     render json: @output
   end
 
@@ -98,6 +103,12 @@ class ApiController < ApplicationController
     @i_health_bo = Ihealth.new
     @i_health_bo.send_api_request_bo
     @i_health_bo.parse_bo
+  end
+
+  def new_fitbit
+    @fitbit = Fitbit.new
+    @fitbit.send_api_request
+    @fitbit.parse
   end
 
 end
