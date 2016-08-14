@@ -5,10 +5,10 @@ class ApiController < ApplicationController
     new_ihealth_bo
     @output = {}
     if @i_health_bp.bp_data_list != []
-      @output[:bp_data_list] = @i_health_bp.bp_data_list
-      @output[:bp_dummy] = false
+      @output["bp_data_list"] = @i_health_bp.bp_data_list
+      @output["bp_dummy"] = false
     else
-      @output[:bp_data_list] = [
+      @output["bp_data_list"] = [
         {
           'sys' => '120',
           'dia' => '80',
@@ -45,14 +45,14 @@ class ApiController < ApplicationController
           'date' => '08-12-2016'
         }
       ]
-      @output[:bp_dummy] = true
+      @output["bp_dummy"] = true
     end
-    @output[:bp_unit] = @i_health_bp.bp_unit
+    @output["bp_unit"] = @i_health_bp.bp_unit
     if @i_health_bo.bo_data_list != []
-      @output[:bo_data_list] = @i_health_bo.bo_data_list
-      @output[:bo_dummy] = false
+      @output["bo_data_list"] = @i_health_bo.bo_data_list
+      @output["bo_dummy"] = false
     else
-      @output[:bo_data_list] = [
+      @output["bo_data_list"] = [
         {
           'oxy' => '95',
           'date' => '08-06-2016'
@@ -83,7 +83,7 @@ class ApiController < ApplicationController
         },
 
       ]
-      @output[:bo_dummy] = true
+      @output["bo_dummy"] = true
     end
     render json: @output
   end
