@@ -3,6 +3,7 @@ class ApiController < ApplicationController
   def new
     new_ihealth_bp
     new_ihealth_bo
+    @fitbit_hr = new_fitbit_hr
     new_fitbit
     @output = {}
     if @i_health_bp.bp_data_list != []
@@ -87,38 +88,42 @@ class ApiController < ApplicationController
       ]
       @output["bo_dummy"] = true
     end
-
-    @output["hr_data_list"] = [
-      {
-        "heart_rate": '85',
-        "date": "08-06-2016"
-      },
-      {
-        "heart_rate": '90',
-        "date": "08-07-2016"
-      },
-      {
-        "heart_rate": '105',
-        "date": "08-08-2016"
-      },
-      {
-        "heart_rate": '124',
-        "date": "08-09-2016"
-      },
-      {
-        "heart_rate": '99',
-        "date": "08-10-2016"
-      },
-      {
-        "heart_rate": '85',
-        "date": "08-11-2016"
-      },
-      {
-        "heart_rate": '87',
-        "date": "08-12-2016"
-      }
-    ]
-    @output["hr_dummy"] = true
+    if @fitbit_hr != []
+      @output['hr_data_list'] = @fitbit_hr
+      @output['hr_dummy'] = true
+    else
+      @output["hr_data_list"] = [
+        {
+          "heart_rate": '85',
+          "date": "08-06-2016"
+        },
+        {
+          "heart_rate": '90',
+          "date": "08-07-2016"
+        },
+        {
+          "heart_rate": '105',
+          "date": "08-08-2016"
+        },
+        {
+          "heart_rate": '124',
+          "date": "08-09-2016"
+        },
+        {
+          "heart_rate": '99',
+          "date": "08-10-2016"
+        },
+        {
+          "heart_rate": '85',
+          "date": "08-11-2016"
+        },
+        {
+          "heart_rate": '87',
+          "date": "08-12-2016"
+        }
+      ]
+      @output["hr_dummy"] = true
+    end
 
     @output["age"] = @fitbit.age
     @output["name"] = @fitbit.name
@@ -146,6 +151,13 @@ class ApiController < ApplicationController
     @fitbit = Fitbit.new
     @fitbit.send_api_request
     @fitbit.parse
+  end
+
+  def new_fitbit_hr
+    @fitbit_hr = Fitbit.new
+    @fitbit_hr.send_api_request_hr
+    @fitbit_hr.parse_hr
+    @fitbit_hr.arrayify_hr
   end
 
 end

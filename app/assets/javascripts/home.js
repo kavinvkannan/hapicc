@@ -50,6 +50,7 @@ function dataParse(data) {
   var bpRecord = data.bp_data_list;
   var boRecord = data.bo_data_list;
   var hrRecord = data.hr_data_list;
+  console.log(data);
   var sysArray = [];
   var diaArray = [];
   var dateArray = [];
@@ -69,10 +70,11 @@ function dataParse(data) {
     hrArray.push(parseInt(hrRecord[i].heart_rate));
   }
 
-  console.log(sysArray);
-  console.log(diaArray);
-  console.log(dateArray);
-  console.log(boArray);
+  // console.log(sysArray);
+  // console.log(diaArray);
+  // console.log(dateArray);
+  // console.log(boArray);
+  console.log(hrArray);
   // var dia = data.bp_data_list[0].dia;
   chartBuilder(sysArray, diaArray, dateArray, boArray, hrArray);
 }
