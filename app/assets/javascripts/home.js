@@ -13,7 +13,7 @@ function chartBuilder(sysArray, diaArray, dateArray, boArray, hrArray) {
         },
         yAxis: {
             title: {
-                text: 'mmHg'
+                text: ''
             },
             plotLines: [{
                 value: 0,
