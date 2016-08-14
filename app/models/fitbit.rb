@@ -11,4 +11,14 @@ class Fitbit < ApplicationRecord
 	def age
 		@parsed_response['age']
 	end
+
+	def name
+		@parsed_response['name']
+	end
+	def weight
+		@parsed_response['weight']
+	end
+	def gender
+		@parsed_response['gender']
+	end
 end
