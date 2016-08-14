@@ -1,9 +1,5 @@
 class Fitbit < ApplicationRecord
-<<<<<<< HEAD
-
-	def get_api
-	 	@response = HTTParty.get()
+	def send_api_request
+		@response = HTTParty.get('https://api.fitbit.com/1/user/-/profile.json')
 	end
-=======
->>>>>>> 14c1a438a4545bda15f7618716e39a6488712d91
 end
