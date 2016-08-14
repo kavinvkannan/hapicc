@@ -88,6 +88,8 @@ class ApiController < ApplicationController
       ]
       @output["bo_dummy"] = true
     end
+    # p @fitbit_hr
+    # p "*" * 50
     if @fitbit_hr != []
       @output['hr_data_list'] = @fitbit_hr
       @output['hr_dummy'] = true
