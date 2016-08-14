@@ -1,4 +1,4 @@
-function chartBuilder(sysArray, diaArray, dateArray) {
+function chartBuilder(sysArray, diaArray, dateArray, boArray) {
     $('#container').highcharts({
         title: {
             text: 'Blood pressure measurements for the week',
@@ -9,8 +9,7 @@ function chartBuilder(sysArray, diaArray, dateArray) {
             x: -20
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: dateArray
         },
         yAxis: {
             title: {
@@ -37,26 +36,36 @@ function chartBuilder(sysArray, diaArray, dateArray) {
         }, {
             name: 'Diastolic',
             data: diaArray
+        }, {
+            name: 'Blood Oxygen',
+            data: boArray
         }]
     });
 };
 
 function dataParse(data) {
   var bpRecord = data.bp_data_list;
+  var boRecord = data.bo_data_list;
   var sysArray = [];
   var diaArray = [];
   var dateArray = [];
+  var boArray = [];
   for (var i = 0; i < bpRecord.length; i += 1) {
     sysArray.push(parseInt(bpRecord[i].sys));
     diaArray.push(parseInt(bpRecord[i].dia));
     dateArray.push(bpRecord[i].date);
-
   }
-console.log(sysArray);
-console.log(diaArray);
-console.log(dateArray);
+
+  for (var i = 0; i < boRecord.length; i += 1) {
+    boArray.push(parseInt(boRecord[i].date));
+  }
+
+  console.log(sysArray);
+  console.log(diaArray);
+  console.log(dateArray);
+  console.log(boArray);
   // var dia = data.bp_data_list[0].dia;
-  chartBuilder(sysArray, diaArray, dateArray);
+  chartBuilder(sysArray, diaArray, dateArray, boRecord);
 }
 
 $(document).ready(function() {
